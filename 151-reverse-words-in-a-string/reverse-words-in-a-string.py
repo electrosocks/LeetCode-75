@@ -9,7 +9,7 @@ class Solution:
         end = len(words_list) - 1
 
         # Iterate through length of word
-        for i in range(len(s)):
+        for i in range(len(words_list)):
             if start < end:
                 words_list[start], words_list[end] = words_list[end], words_list[start]
                 start += 1
