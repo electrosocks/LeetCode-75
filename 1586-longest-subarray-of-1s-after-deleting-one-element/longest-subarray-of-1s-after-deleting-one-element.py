@@ -28,15 +28,9 @@ class Solution:
                 # Move pointer
                 lp += 1
 
-            if zerocount < 1:
-                delete = 1
-            else:
-                delete = zerocount
-
-            # Update maxSize
-            if maxSize < i - lp + 1 - delete:
-                maxSize = i - lp + 1 - delete
+            # Calculate final result
+            maxSize = max(maxSize, i - lp + 1 - zerocount)
 
         # Return Result
-        return maxSize
+        return maxSize - 1 if maxSize == length else maxSize
             
