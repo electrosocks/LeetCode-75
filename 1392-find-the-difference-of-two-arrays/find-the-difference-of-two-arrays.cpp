@@ -1,15 +1,9 @@
 // Create a function that compares 2 vectors to eachother
-vector<int> uniqueValuesInFirstVector(vector<int>& v1, vector<int>& v2)
+vector<int> uniqueValuesInFirstVector(const vector<int>& v1, const vector<int>& v2)
 {
     // Create a unordered_map to track
-    unordered_set<int> valuesInV2;
+    unordered_set<int> valuesInV2(v2.begin(), v2.end());
     unordered_set<int> uniqueValuesInV1;
-
-    // Add all values of v2 into valuesInV2
-    for (int value : v2)
-    {
-        valuesInV2.insert(value);
-    }
 
     // Compare with values in V1
     for (int value : v1)
