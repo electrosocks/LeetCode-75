@@ -2,34 +2,31 @@ class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
         
-        bool uniqueOccurences = true;
+        // We can use a hashmap to track occurences
+        unordered_map<int, int> numberFrequencies;
 
-        // Create a unordered_map to track occurences
-        unordered_map<int, int> occurences;
-
-        // Add occurences to the unordered_map
-        for (int values : arr)
+        // Put all values in this map
+        for (int value : arr)
         {
-            occurences[values]++;
+            numberFrequencies[value]++;
         }
 
-        // Create a set to check occurence uniqueness
-        unordered_set<int> occurrencesValues;
+        // We can use a unordered_set to track duplicates
+        unordered_set<int> uniqueness;
 
-        // Add values from unordered map
-        for (const auto& [key, values] : occurences)
+        // Check values in unordered_map;
+        for (const auto& [key, value] : numberFrequencies)
         {
-            if (occurrencesValues.find(values) == occurrencesValues.end())
+            if (uniqueness.find(value) == uniqueness.end())
             {
-                occurrencesValues.insert(values);
+                uniqueness.insert(value);
             }
             else
             {
-                uniqueOccurences = false;
+                return false;
             }
         }
 
-        return uniqueOccurences;
-
+        return true;
     }
 };
