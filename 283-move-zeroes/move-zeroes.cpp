@@ -2,20 +2,22 @@ class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
         
-        // First, make a iterator for the very left
-        int leftIterator{0};
+        // First, make a write pointer
+        int write = 0;
 
-        // Loop through all elements
-        for (int rightIterator{0}; rightIterator < nums.size(); rightIterator++)
+        // Now, cycle though nums
+        for (int read = 0; read < nums.size(); read++)
         {
-            // If the right iterator does not equals zero
-            if (nums[rightIterator] != 0)
+            // If the index is not zero
+            if (nums[read] != 0)
             {
-                // Move it left
-                swap(nums[rightIterator], nums[leftIterator]);
+                // Then swap it with the write value.
+                int temporary = nums[write];
+                nums[write] = nums[read];
+                nums[read] = temporary;
 
-                // Update the left iterator location only if it now conains a real value
-                leftIterator++;
+                // Update right to the next index
+                write++;
             }
         }
 
